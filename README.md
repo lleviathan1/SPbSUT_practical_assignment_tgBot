@@ -23,7 +23,7 @@
 ## Зависимости
 ### Ubuntu/Debian
 ```bash
-sudo apt update && sudo apt install python3 
+sudo apt update && sudo apt install python3 -y
 ```
 
 ## Запуск тестов
