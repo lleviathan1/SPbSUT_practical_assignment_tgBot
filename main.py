@@ -1,12 +1,15 @@
 import telebot
+import source.config as config
+import unittest
 import json
 
-bot = telebot.TeleBot("API-Token")
+cfg = config.parse("config/config.json")
+bot = telebot.TeleBot(cfg["token"])
 
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    bot.reply_to(message, "Howdy, how are you doing?")
+    bot.reply_to(message, "Привет, великий потомок русов!!! Поговори с РУСОМ!!!")
 
 
 @bot.message_handler(func=lambda message: True)
@@ -15,7 +18,6 @@ def echo_all(message):
 
 
 def main():
-    print("Hello Telegram")
     bot.infinity_polling()
 
 
