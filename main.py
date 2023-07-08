@@ -1,11 +1,15 @@
 import telebot
-import source.config as config
 import unittest
+import logging
 import json
 
-cfg = config.parse("config/config.json")
-bot = telebot.TeleBot(cfg["token"])
+import source.config as config
+import source.calc as calc
+import source.meme as meme
+import source.weather as weather
+import source.translate as translate
 
+bot = telebot.TeleBot(config.parse("config/config.json")["token"])
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
@@ -18,6 +22,7 @@ def echo_all(message):
 
 
 def main():
+    logging.info("Бот стартовал")
     bot.infinity_polling()
 
 
