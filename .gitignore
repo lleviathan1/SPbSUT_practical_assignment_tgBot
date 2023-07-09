@@ -1,2 +1,3 @@
-config/config.json
-loging
+config/*
+loging/*
+mems/*
