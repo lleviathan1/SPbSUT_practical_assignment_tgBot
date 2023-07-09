@@ -1,2 +1,3 @@
-config
-loging
+config/*
+loging/*
+mems/*

@@ -3,6 +3,9 @@ import unittest
 import logging
 import json
 
+logging.basicConfig(level=logging.INFO, filename="loging/info.log", filemode="w",
+                        format="%(asctime)s %(levelname)s %(message)s")
+
 import source.config as config
 import source.meme as meme
 import source.weather as weather
@@ -14,7 +17,6 @@ import source.calc as calc
 bot = telebot.TeleBot(config.parse("config/config.json")["token"])
 
 usersState = {}
-
 
 @bot.message_handler(commands=['start'])
 def request_start(message):
@@ -58,13 +60,14 @@ def echo_all(message):
             usersState[str(message.from_user.id)] = "meme"
             logging.info(
                 f'Пользователь id {message.from_user.id} сменил состояние c {lastState} на {usersState[str(message.from_user.id)]}')
+            meme.send_meme(message, bot, usersState)
         else:
             logging.warning(f"Пользователь отправил некоректную команду {message.text}. Сообщение проигнорировано")
     elif usersState.get(str(message.from_user.id)) == "waitCalcResponse":
         calc.calc_send_responce(message, bot, usersState)
     else:
         logging.warning(
-            f"Состояние пользователя {usersState.get(str(message.from_user.id))}, ожидалось functionSelection. Сообщение проигнорировано")
+            f"Состояние пользователя {usersState.get(str(message.from_user.id))}. Сообщение проигнорировано")
 
 
 def main():
@@ -73,6 +76,4 @@ def main():
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, filename="loging/info.log", filemode="w",
-                        format="%(asctime)s %(levelname)s %(message)s")
     main()
