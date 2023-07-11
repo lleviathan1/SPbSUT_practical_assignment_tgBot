@@ -3,20 +3,34 @@ import unittest
 import logging
 import json
 
+# Конфигурирование логов
 logging.basicConfig(level=logging.INFO, filename="loging/info.log", filemode="w",
                         format="%(asctime)s %(levelname)s %(message)s")
 
+# Вспомогательные функции
 import source.config as config
+import source.keyboard as keyboardd
+
+# SL - Сервис логика
 import source.meme as meme
 import source.weather as weather
 import source.translate as translate
-import source.keyboard as keyboardd
 import source.calc as calc
 
+# Подключение по токену
+bot = telebot.TeleBot(config.parse("config/config.json")["tg_api_token"])
 
-bot = telebot.TeleBot(config.parse("config/config.json")["token"])
-
+# Состояния пользователей
 usersState = {}
+# В программе используется идея акторов,
+# но без акторного фреймворка
+
+# Данная фича нужна для того, чтобы пользователи
+# друг друга не блокировали без использования ассинхронных функций
+
+# Каждому пользователю соотвествуют состояния
+
+# Обработка легко представима в виде конечного автомата
 
 @bot.message_handler(commands=['start'])
 def request_start(message):
@@ -38,6 +52,7 @@ def request_help(message):
     bot.reply_to(message, "Что-то помогающее пользователю", reply_markup=keyboardd.getStartKeyboard())
 
 
+# SLM - менеджер сервис логики
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
     logging.info(f"Новое сообщение от пользователя id: {message.from_user.id} -> {message.text}")
