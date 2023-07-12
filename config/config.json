@@ -1,3 +1,4 @@
 {
-  "tg_api_token": "API-TOKEN"
+  "tg_api_token": "token",
+  "weather_api_token": "token"
 }
