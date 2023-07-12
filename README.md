@@ -23,6 +23,7 @@
 ### Ubuntu/Debian
 ```bash
 sudo apt update && sudo apt install python3 -y
+pip install googletrans==4.0.0-rc1
 ```
 
 ## Запуск тестов
