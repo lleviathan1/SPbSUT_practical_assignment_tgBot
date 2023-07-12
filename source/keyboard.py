@@ -35,3 +35,16 @@ def getTranslateKeyboard():
     markup.add(btn3)
     markup.add(btn4)
     return markup
+
+def getWeatherKeyboard():
+    markup = types.ReplyKeyboardMarkup()
+    btn1 = types.InlineKeyboardButton(
+        'Санкт-Петербург')
+    btn3 = types.InlineKeyboardButton('Москва')
+    btn2 = types.InlineKeyboardButton('Париж')
+    btn4 = types.InlineKeyboardButton('Веллингтон')
+    markup.add(btn1)
+    markup.add(btn2)
+    markup.add(btn3)
+    markup.add(btn4)
+    return markup

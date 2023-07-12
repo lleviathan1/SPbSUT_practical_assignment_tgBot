@@ -63,17 +63,20 @@ def echo_all(message):
             calc.calc_send_request(message, bot, usersState)
         elif message.text == "Прогноз погоды":
             log.sl_log_state("weather", message.from_user.id, usersState)
-
+            weather.request_city(message, bot, usersState)
         elif message.text == "Мем дня":
             log.sl_log_state("mems", message.from_user.id, usersState)
             meme.send_meme(message, bot, usersState)
         else:
+            bot.reply_to(message, "Неизвестная команда", reply_markup=keyboardd.getStartKeyboard())
             logging.warning(f"Пользователь отправил некоректную команду {message.text}. Сообщение проигнорировано")
     elif usersState.get(str(message.from_user.id)) == "waitCalcResponse":
         calc.calc_send_responce(message, bot, usersState)
     elif usersState.get(str(message.from_user.id)) == "waitPhraseToTranslate":
         log.sl_log_state("asyncRequestTranslate", message.from_user.id, usersState)
         translate.response_translate_text(message, bot, usersState)
+    elif usersState.get(str(message.from_user.id)) == "waitCity":
+        weather.response_weather(message, bot, usersState)
     else:
         logging.warning(
             f"Состояние пользователя {usersState.get(str(message.from_user.id))}. Сообщение проигнорировано")
