@@ -15,7 +15,6 @@
 + [Зависимости](#зависимости)
 + [Запуск тестов](#запуск_тестов)
 + [Запуск](#запуск)
-+ [Гайд по коду](#гайд_по_коду)
 
 ## Описание
 
@@ -24,6 +23,7 @@
 ### Ubuntu/Debian
 ```bash
 sudo apt update && sudo apt install python3 -y
+pip install googletrans==4.0.0-rc1
 ```
 
 ## Запуск тестов
@@ -31,6 +31,4 @@ sudo apt update && sudo apt install python3 -y
 
 ## Запуск
 
-
-## Гайд по коду
 
