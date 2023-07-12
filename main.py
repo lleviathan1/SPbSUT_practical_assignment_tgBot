@@ -10,7 +10,7 @@ import source.config as config
 import source.meme as meme
 import source.weather as weather
 import source.translate as translate
-import source.keyboard as keyboardd
+import source.keyboard as keyboard
 import source.calc as calc
 
 
@@ -25,7 +25,7 @@ def request_start(message):
     usersState[str(message.from_user.id)] = "functionSelection"
     logging.info(
         f'Пользователь id {message.from_user.id} сменил состояние c {lastState} на {usersState[str(message.from_user.id)]}')
-    bot.reply_to(message, "Привет, выбери действие", reply_markup=keyboardd.getStartKeyboard())
+    bot.reply_to(message, "Привет, выбери действие", reply_markup=keyboard.getStartKeyboard())
 
 
 @bot.message_handler(commands=['help'])
@@ -35,7 +35,7 @@ def request_help(message):
     usersState[str(message.from_user.id)] = "functionSelection"
     logging.info(
         f'Пользователь id {message.from_user.id} сменил состояние c {lastState} на {usersState[str(message.from_user.id)]}')
-    bot.reply_to(message, "Что-то помогающее пользователю", reply_markup=keyboardd.getStartKeyboard())
+    bot.reply_to(message, "Что-то помогающее пользователю", reply_markup=keyboard.getStartKeyboard())
 
 
 @bot.message_handler(func=lambda message: True)
