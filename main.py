@@ -47,7 +47,7 @@ def request_help(message):
     usersState[str(message.from_user.id)] = "functionSelection"
     logging.info(
         f'Пользователь id {message.from_user.id} сменил состояние c {lastState} на {usersState[str(message.from_user.id)]}')
-    bot.reply_to(message, "Что-то помогающее пользователю", reply_markup=keyboardd.getStartKeyboard())
+    bot.reply_to(message, "Что-то помогающее пользователю", reply_markup=keyboard.getStartKeyboard())
 
 
 # SLM - менеджер сервис логики
