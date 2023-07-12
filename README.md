@@ -41,7 +41,7 @@ python3 startBot.py test
 ```
 Ожидаемый результат:
 
-![Ожидаемый_результат](https://github.com/happyT1024/SPbSUT_practical_assignment_tgBot/blob/main/photos/testsOK.png)
+![Ожидаемый_результат](https://github.com/happyT1024/SPbSUT_practical_assignment_tgBot/blob/master/photos/testsOK.png)
 
 ## Запуск
 Когда настроили зависимости, можно переходить к настройке конфигурации.
@@ -51,7 +51,7 @@ python3 startBot.py test
 Далее следует создать дирректорию logging - в нее будут писаться логи программы.
 
 Пример логов:
-![Логи](https://github.com/happyT1024/SPbSUT_practical_assignment_tgBot/blob/main/photos/logging.png)
+![Логи](https://github.com/happyT1024/SPbSUT_practical_assignment_tgBot/blob/master/photos/logging.png)
 
 Далее следует создать папку **memes**, в которую следует поместить несколько мемов.
 
